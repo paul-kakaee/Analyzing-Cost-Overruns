@@ -1,0 +1,37 @@
+3. Correlation and Regression Analysis:
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+# Calculate the correlation between initial budget and cost overrun
+correlation = data[['Initial_Budget', 'Cost_Overrun']].corr().iloc[0, 1]
+print(f'Correlation between Initial Budget and Cost Overrun: {correlation:.2f}')
+
+# Prepare data for regression analysis
+X = data[['Initial_Budget']]
+y = data['Cost_Overrun']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict cost overruns on the test set
+y_pred = model.predict(X_test)
+
+# Calculate Mean Squared Error (MSE)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse:.2f}')
+
+# Regression line plot
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='Initial_Budget', y='Cost_Overrun', data=data, hue='Project_Type', palette='Set2')
+plt.plot(X_test, y_pred, color='red', linewidth=2)
+plt.title('Regression Line for Initial Budget vs. Cost Overrun')
+plt.xlabel('Initial Budget (Dollars)')
+plt.ylabel('Cost Overrun (Dollars)')
+plt.legend(title='Project Type')
+plt.savefig('visualizations/budget_vs_cost_overrun_regression.png')
+plt.show()
