@@ -1,0 +1,26 @@
+1. Data Loading and Preparation:
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+data = pd.read_csv('data/construction_budget_costs.csv')
+
+# Display the first few rows
+print(data.head())
+
+# Check for missing values
+print(data.isnull().sum())
+
+# Drop missing values
+data.dropna(inplace=True)
+
+# Ensure numeric columns are correctly typed
+data['Initial_Budget'] = pd.to_numeric(data['Initial_Budget'], errors='coerce')
+data['Final_Cost'] = pd.to_numeric(data['Final_Cost'], errors='coerce')
+data['Cost_Overrun'] = data['Final_Cost'] - data['Initial_Budget']
+
+# Preview the cleaned data
+print(data.head())
