@@ -1,0 +1,9 @@
+4. Reporting and Visualization:
+
+# Average cost overrun by project type
+average_overruns = data.groupby('Project_Type')['Cost_Overrun'].mean()
+print('Average Cost Overrun by Project Type:')
+print(average_overruns)
+
+# Save cleaned data to a new CSV file
+data.to_csv('data/cleaned_construction_budget_costs.csv', index=False)
