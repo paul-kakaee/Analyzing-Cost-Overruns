@@ -1,0 +1,23 @@
+2. Exploratory Data Analysis (EDA):
+
+# Summary statistics
+print(data.describe())
+
+# Distribution of cost overruns
+plt.figure(figsize=(10, 6))
+sns.histplot(data['Cost_Overrun'], kde=True, color='blue')
+plt.title('Distribution of Cost Overruns')
+plt.xlabel('Cost Overrun (Dollars)')
+plt.ylabel('Frequency')
+plt.savefig('visualizations/cost_overrun_distribution.png')
+plt.show()
+
+# Scatter plot of initial budget vs. cost overrun
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='Initial_Budget', y='Cost_Overrun', hue='Project_Type', data=data, palette='Set1')
+plt.title('Initial Budget vs. Cost Overrun by Project Type')
+plt.xlabel('Initial Budget (Dollars)')
+plt.ylabel('Cost Overrun (Dollars)')
+plt.legend(title='Project Type')
+plt.savefig('visualizations/budget_vs_cost_overrun_scatter.png')
+plt.show()
