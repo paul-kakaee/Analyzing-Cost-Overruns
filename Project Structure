@@ -1,0 +1,20 @@
+Project Structure:
+/Construction-Budget-Cost-Overrun-Analysis
+│
+├── /data
+│   ├── construction_budget_costs.csv
+│
+├── /notebooks
+│   ├── Budget_Cost_Overrun_Analysis.ipynb
+│
+├── /scripts
+│   ├── data_cleaning.py
+│   ├── analysis.py
+│
+├── /visualizations
+│   ├── cost_overrun_distribution.png
+│   ├── budget_vs_cost_overrun_scatter.png
+│   ├── budget_vs_cost_overrun_regression.png
+│
+├── README.md
+└── requirements.txt
